@@ -1,61 +1,55 @@
 For this workshop you MUST have the following:
 
-## Requirements
+# Requirements
 - VsCode
-- Python 3.7
+- Python 3.10
 - A virtual environment tool (venv)
 - An Azure account 
 - An active Azure OpenAI account with 2 deployed models see below
 
-## Preparation
+# Preparation
 
 ## OpenAI subscription and deployments
 * Create an Azure OpenAI account
 * Create 'gpt-35-turbo','text-embedding-ada-002' deployments
 
-### VsCode
+## VsCode
 * Install [Visual Studio Code](https://code.visualstudio.com/)
 
-### Python
-* Install [Python 3.7](https://www.python.org/downloads/release/python-31011/)
+## Python
+* Install [Python 3.10](https://www.python.org/downloads/release/python-31011/)
 
 ### Python3 Virtualenv Setup
-*  Installation
-        To install virtualenv via pip run:
-            $ pip3 install virtualenv
+*  To install virtualenv via pip run:
+
+    `pip3 install virtualenv`
+
 * Creation of virtualenv:
-    - Windows
-    $ python -m virtualenv venv (in the openAI workshop directory)
-    - Mac
-    $ virtualenv -p python3 <desired-path>
+    * Windows (in the openAI workshop directory)
 
-    Activate the virtualenv:
-    $ source <desired-path>/bin/activate
+        `python -m virtualenv venv`
+    * Mac / Linux
 
-    Deactivate the virtualenv:
-    $ deactivate
+        `virtualenv -p python3 venv`
 
-#### Python3 Virtualenv Setup
-*  Installation
-        To install virtualenv via pip run:
-            $ pip3 install virtualenv
-* Creation of virtualenv:
-    - Windows
-    $ python -m virtualenv venv (in the openAI workshop directory)
-    - Mac
-    $ virtualenv -p python3 <desired-path>
+* Activate the virtualenv:
+    * Windows:
+
+        `.\venv\Scripts\activate.ps1`
+    * Mac / Linux
+
+        `source ./venv/bin/activate`
 
 ### Install all libraries in your virtual environment
-* Activate the environment
-    Windows:
-        .\venv\Scripts\activate.ps1
-    Mac:
-    $ source ./venv/bin/activate
+* Make sure you have the requirements installed in your Python environment:
+    * Windows:
 
-* Make sure you have the requirements installed in your Python environment using `pip install -r requirements.txt`.
+        `pip install -r requirements.txt`
+    * Mac / Linux
 
+        `pip install -r requirements.txt`
 
-### Create a sample Azure SQL DB with Adventureworks sample data
+## Azure SQL DB with Adventureworks sample data
 * Insert your subscription ID in the file [createAll.ps1](./scripts/createAll.ps1) and save it. 
     ```
     $SubscriptionId = "<your subscription here>"
@@ -65,25 +59,29 @@ For this workshop you MUST have the following:
     param serverName string = '<sql server name>'
     ```
 * This powershell script will create:
-    * A resourcegroup called openai-workshop
-    * An Azure SQL server called <your sql server name> with an AdventureWorks DB
+    * A resourcegroup called `openai-workshop`
+    * An Azure SQL server called `<your sql server name>` with an AdventureWorks DB
 
-* Go to the azure portal and login with a user that has administrator permissions
+* Go to the azure portal and login with a user that has administrator permissions.
+
 * Open the cloud shell in the azure portal as follows:
 ![Cloud shell](./images/step2.png)
 
-* Upload the files in the scripts folder: "createAll.ps1" and "deployAll.bicep" ONE BY ONE by using the upload file button in the cloud shell
+* Upload the files in the scripts folder: `createAll.ps1` and `deployAll.bicep` ONE BY ONE by using the upload file button in the cloud shell:
 ![Upload](./images/step3.png)
 
-* Run ./createAll.ps1
+* Run `./createAll.ps1`
 ![Upload](./images/step4.png)
-NOTE: This takes time so be patient
-You should get an Azure SQL server with a DB called aworks
+*NOTE: This takes time so be patient.*
+
+* You should get an Azure SQL server with a DB called aworks:
 ![Upload](./images/step5.png)
 
 # IMPORTANT!
-### Setup environment variables
-* Rename the '.env.template' file to '.env' and modify all the endpoints and api keys for all deployments as follows:
+## Setup environment variables
+
+Rename the `.env.template` file to `.env` and modify all the endpoints and api keys for all deployments as follows:
+
 ```
 OPENAI_DEPLOYMENT_ENDPOINT ="<your openai endpoint>" 
 OPENAI_API_KEY = "<your openai api key>"
@@ -122,4 +120,10 @@ KUSTO_MANAGED_IDENTITY_SECRET = "<your kusto managed identity secret>"
 OPENAI_DALLE_ENDPOINT = "<your openai dalle endpoint>"
 OPENAI_DALLE_API_KEY = "<your openai dalle api key>"
 OPENAI_DALLE_DEPLOYMENT_NAME = "<your openai dalle model name>"
+
+OPENAI_DEPLOYMENT_ENDPOINT_GPT4 = "<your openai endpoint>"
+OPENAI_API_KEY_GPT4 = "<your openai api key>"
+OPENAI_DEPLOYMENT_NAME_GPT4 = "<your gpt4 deployment name>"
+OPENAI_DEPLOYMENT_VERSION_GPT4 = "<gpt4 api version>"
+OPENAI_MODEL_NAME_GPT4="<gpt4 model name>"
 ```
