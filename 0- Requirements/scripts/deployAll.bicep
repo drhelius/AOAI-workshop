@@ -1,6 +1,6 @@
 param serverName string = '<sql server name>'
 param databaseName string = 'aworks'
-param location string = 'westeurope'
+param location string = 'uksouth'
 param adminLogin string = 'SqlAdmin'
 param adminPassword string = 'ChangeYourAdminPassword1'
 

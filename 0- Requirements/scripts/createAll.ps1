@@ -1,7 +1,7 @@
 
 $SubscriptionId = '<your subscription here>'
 $resourceGroupName = "openai-workshop"
-$location = "westeurope"
+$location = "uksouth"
 
 
 # Set subscription 
